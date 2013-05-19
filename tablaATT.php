@@ -7,6 +7,7 @@
 		<td class='opc'> </td>
 	</tr>
 <?php
+	$db=$"   ";
 	include("php/DataConnection.class.php");
 	$db = $_GET["db"];
 	$table = $_GET["table"];
