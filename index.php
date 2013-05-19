@@ -7,21 +7,45 @@
 
 	<link rel="stylesheet" type="text/css" href="css/estilo.css"> 
 	<script>
+		function showBD()
+		{
+			 var url = document.getElementById('url').value;
+		         var usuario = document.getElementById('user').value;
+		         var password = document.getElementById('pw').value;
+			if (url.length==0 || usuario.length==0 )
+		         { 
+				document.getElementById("tablaDB").innerHTML="Lo sentimos, vuelve a especificar los datos.";
+				return;
+			}
+			if (window.XMLHttpRequest)
+			{// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			
+			xmlhttp.onreadystatechange=function()
+  			{
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    				{
+					document.getElementById("tablaDB").innerHTML = xmlhttp.responseText;
+    				}
+  			}
+			xmlhttp.open("GET","getDB.php?url="+url+"&pass="+password+"&user="+usuario,true);
+			
+			xmlhttp.send();
+		}	
 		function loadTable()
 		{
-			    	
-			var parametros;
-
-		    url = document.getElementById('url').value;
-		    usuario = document.getElementById('user').value;
-		    password = document.getElementById('pw').value;
-
-			parametros = "url=" + url + "&";
-		    parametros+= "usuario=" + usuario + "&";
-		    parametros+= "password=" + password;
-
-		    //sendPetitionSync("tablaDB.php?"+parametros,"tablaDB",document);
-		    alert(parametros);
+		   
+		    var url = document.getElementById('url').value;
+		    var usuario = document.getElementById('user').value;
+		    var password = document.getElementById('pw').value;
+		    showDB(url,usuario,password);
+		xmlhttp.open("GET","http://localhost/~holaalex2204/DM3/getDB.php?url=localhost&pass=root&user=root",true);
+			
 		}
 	</script>
 
@@ -39,7 +63,7 @@
 			Buscar bases de datos
 		</div>
 		<div id="tablaDB" class="box">
-      		<?php include("tablaDB.php"); ?>
+      		 
         </div>
 	  
 	</section>
@@ -58,7 +82,7 @@
 	 		<input type="text" id="pw" class="form" placeholder="Introduce el password"></input>
 
 		    <p align="center">  
-		        <input id="close-panel" type="submit" value="Aceptar" onclick='loadTable()'></input>  
+		        <input id="close-panel" type="button" value="Aceptar" onclick='showBD()'></input>  
 		    </p>  
 
 		</form>		
