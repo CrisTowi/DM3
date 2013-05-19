@@ -37,6 +37,27 @@
 			
 			xmlhttp.send();
 		}	
+		function muestraContenido(str)
+		{
+			if (window.XMLHttpRequest)
+			{// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			
+			xmlhttp.onreadystatechange=function()
+  			{
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    				{
+					document.getElementById("tablaDB").innerHTML = xmlhttp.responseText;
+    				}
+  			}
+			xmlhttp.open("GET",str,true);
+			xmlhttp.send();
+		}	
 		function loadTable()
 		{
 		   
@@ -44,8 +65,6 @@
 		    var usuario = document.getElementById('user').value;
 		    var password = document.getElementById('pw').value;
 		    showDB(url,usuario,password);
-		xmlhttp.open("GET","http://localhost/~holaalex2204/DM3/getDB.php?url=localhost&pass=root&user=root",true);
-			
 		}
 	</script>
 
@@ -73,13 +92,13 @@
 	 	<form> 
 
 	 		<p>URL: </p>
-	 		<input type="text" id="url" class="form" placeholder="Introduce la url"></input>
+	 		<input type="text" id="url" value="localhost" class="form" placeholder="Introduce la url"></input>
 	 		</br>
 	 		<p>Usuario: </p>
-	 		<input type="text" id="user" class="form" placeholder="Introduce el usuario"></input>
+	 		<input type="text" id="user" class="form"  value="root" placeholder="Introduce el usuario"></input>
 	 		</br>
 	 		<p>Password: </p>
-	 		<input type="text" id="pw" class="form" placeholder="Introduce el password"></input>
+	 		<input type="text" id="pw" class="form" placeholder="Introduce el password" value="root"></input>
 
 		    <p align="center">  
 		        <input id="close-panel" type="button" value="Aceptar" onclick='showBD()'></input>  

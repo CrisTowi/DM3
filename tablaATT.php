@@ -1,3 +1,13 @@
+<?php
+	include("php/DataConnection.class.php");
+	$db = $_GET["db"];
+	$url = $_GET["url"];
+	$usuario = $_GET["usuario"];
+	$password = $_GET["password"];
+	$table = $_GET["table"];
+	echo "<button class=\"menu\" onclick='muestraContenido(\"getDB.php?url=".$url."&user=".$usuario."&pass=".$password."\")'>Lista BD's</button>";
+	echo "<button class=\"menu\" onclick='muestraContenido(\"tablaTables.php?db=".$db."&url=".$url."&usuario=".$usuario."&password=".$password."\")'>Tablas de ".$db."</button>";
+?>
 <table id='table-content'>
 
 
@@ -7,11 +17,6 @@
 		<td class='opc'> </td>
 	</tr>
 <?php
-	$url = $_GET["url"];
-	$usuario = $_GET["usuario"];
-	$password = $_GET["password"];
-	$db = $_GET["db"];
-	$table = $_GET["table"];
 	include("php/DataConnection.class.php");
 	$conn = new DataConnection($url, $usuario,$password);	
 	$qry = "SHOW columns from ".$table." from ".$db.";";
