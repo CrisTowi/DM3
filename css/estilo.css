@@ -1,0 +1,122 @@
+body
+{
+	background-image: url('background.jpg');
+	font-family:"Helvetica", Arial;
+
+}
+
+header hgroup h1
+{
+	padding-bottom: 10px;
+	border-bottom: solid;
+	border-color: #1d1d1d;
+	text-shadow: 0px 0px 30px rgba(0,0,0,0.5);
+	color: white;
+}
+
+#show-panel
+{
+	border: solid;
+	border-color: green; 
+	border-radius: 20px;
+	cursor: pointer;
+	height: 25px;
+	text-align: center;
+	width: 220px;
+}
+
+#lightbox {  
+	display:none;  
+	background:white;  
+	opacity:0.9;  
+	filter:alpha(opacity=90);  
+	position:absolute;  
+	top:0px;  
+	left:0px;  
+	min-width:100%;  
+	min-height:100%;  
+	z-index:1000;  
+}   
+
+#lightbox-panel {  
+	display:none;  
+	position:fixed;  
+	top:100px;  
+	left:50%;  
+	margin-left:-200px;  
+	width:400px;  
+	background:#FFFFFF;  
+	padding:10px 15px 10px 15px;  
+	border:2px solid green;  
+	z-index:1001; 
+	border-radius: 20px;
+
+}  
+
+#tablaDB
+{
+	margin-top: 45px;
+	margin-left: 200px;
+	display: inline-block;
+	height: 500px;
+	overflow: scroll;
+	width: 60%;
+}
+
+#contenedor
+{
+
+
+	background-color: white;
+	border-radius: 0.5em;
+	height: 600px;
+	margin: 1em;
+	opacity:0.75;
+	padding: 1em 1em;
+	width: 70%;
+	margin: 0 auto; 
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#table-content{
+
+	width: 70%; 
+	margin-left: 10px;
+    margin-top: 60px;  
+    margin-bottom: 30px;
+    position: relative;
+	
+}	
+.tr-header{
+	padding: 3px;
+	background-color:black;
+	border-color: Gray;
+    border-width: 1px;
+    border-style: solid;
+}
+.tr-cont{
+	padding: 3px;
+	background-color:#FBFBEF;
+}
+
+
+footer
+{
+	background:#0B3861;
+	border:2px solid #a1a1a1;
+	border-radius:25px;
+	-moz-border-radius:25px; /* Old Firefox */
+	box-shadow:0px 0px 20px rgba(0,0,0,1);
+	border-style:solid;
+	border-width:2px;
+	border-color: #FFFFFF;
+	color: #FFFFFF;
+	margin: 5;
+	padding:10px 40px; 
+	min-width: 500px;
+	text-align: center;
+    bottom : 20px;
+    width: 90%;
+}
+

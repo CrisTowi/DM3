@@ -1,0 +1,26 @@
+<table id='table-content'>
+
+
+	<tr class='tr-header'  style='color: white'>
+		<td>Propiedad</td>
+		<td>Tipo de dato</td>
+		<td class='opc'> </td>
+	</tr>
+<?php
+	include("php/DataConnection.class.php");
+	$db = $_GET["db"];
+	$table = $_GET["table"];
+	$conn = new DataConnection("localhost", "root", "root");	
+	$qry = "SHOW columns from ".$table." from ".$db.";";
+	$result = $conn->getDB($qry);	
+	while($fila = mysql_fetch_assoc($result))
+	{		
+		echo "<tr class='tr-cont' id='".$idm."' name='".$idm."'>
+			<td>".$fila['Field']."</td>
+			<td>".$fila['Type']."</td>
+			<td><input type='checkbox' name='option1' value='".$fila['Field']."'></td>
+		</tr>";
+	}
+?>
+
+</table>
