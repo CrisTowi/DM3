@@ -13,6 +13,7 @@
 	$conn = new DataConnection("localhost", "root", "root");	
 	$qry = "SHOW columns from ".$table." from ".$db.";";
 	$result = $conn->getDB($qry);	
+	echo "<h2>Estos son los atributo(s) de la tabla ".$table.".</h2>";
 	while($fila = mysql_fetch_assoc($result))
 	{		
 		echo "<tr class='tr-cont' id='".$idm."' name='".$idm."'>
