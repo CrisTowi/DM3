@@ -13,7 +13,7 @@
 
 	include("php/DataConnection.class.php");
 
-	$db = new DataConnection("localhost", "root", "root");	
+	$db = new DataConnection($url, $usuario,$password);	
 	$qry = "SHOW Databases";
 
 

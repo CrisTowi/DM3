@@ -7,11 +7,13 @@
 		<td class='opc'> </td>
 	</tr>
 <?php
-	$db=$"   ";
-	include("php/DataConnection.class.php");
+	$url = $_GET["url"];
+	$usuario = $_GET["usuario"];
+	$password = $_GET["password"];
 	$db = $_GET["db"];
 	$table = $_GET["table"];
-	$conn = new DataConnection("localhost", "root", "root");	
+	include("php/DataConnection.class.php");
+	$conn = new DataConnection($url, $usuario,$password);	
 	$qry = "SHOW columns from ".$table." from ".$db.";";
 	$result = $conn->getDB($qry);	
 	echo "<h2>Estos son los atributo(s) de la tabla ".$table.".</h2>";

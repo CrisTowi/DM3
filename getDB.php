@@ -25,7 +25,7 @@
 		{		
 			$db = $fila['Database'];
 			$response = $response."<tr class='tr-cont' id='".$idm."' name='".$idm."'>
-				<td><a href='tablas.php?db=".$db."'>".$db."</a></td>
+				<td><a href='tablas.php?db=".$db."&url=".$url."&usuario=".$usuario."&password=".$password."'>".$db."</a></td>
 				<td class='opc'><img src='img/pencil.png' onclick='modificarEmpleado(\"".$idm."\")' alt='Modificar' class='clickable'/></td>
 				<td class='opc'><img src='img/less.png'   onclick='eliminarEmpleado(\"".$idm."\")' alt='Eliminar' class='clickable'/></td>
 			</tr>";
