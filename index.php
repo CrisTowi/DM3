@@ -11,7 +11,6 @@
 		{
 			 var url = document.getElementById('url').value;
 		         var usuario = document.getElementById('user').value;
-		         var usuario = document.getElementById('user2').value;
 		         var password = document.getElementById('pw').value;
 			if (url.length==0 || usuario.length==0 )
 		         { 
