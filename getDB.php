@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 <?php
 	$url = $_GET["url"];
 	$usuario = $_GET["user"];
