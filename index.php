@@ -2,11 +2,41 @@
 <html lang="es">
 <head>
 
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 	  
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>	  
 	<script src="js/lb.js"></script>  
-
 	<link rel="stylesheet" type="text/css" href="css/estilo.css"> 
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"> 
 	<script>
+		function Crear()
+		{
+			var url = document.getElementById('nurl').value;
+			var name = document.getElementById('nname').value;
+			var pw = document.getElementById('npw').value;
+			var user = document.getElementById('nuser').value;
+
+			//alert(url + name + pw + user);
+
+			if (window.XMLHttpRequest)
+			{// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			
+			xmlhttp.onreadystatechange=function()
+  			{
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    				{
+					document.getElementById("agregados").innerHTML = xmlhttp.responseText;
+    				}
+  			}
+  			             //alert("CrearDB.php?url="+url+"&pass="+pw+"&user="+user+"&name="+name);
+			xmlhttp.open("GET","getDB.php?url="+url+"&pass="+password+"&user="+usuario,true);
+			
+			xmlhttp.send();
+		}
 		function showBD()
 		{
 			 var url = document.getElementById('url').value;
@@ -37,6 +67,7 @@
 			
 			xmlhttp.send();
 		}	
+
 		function muestraContenido(str)
 		{
 			if (window.XMLHttpRequest)
@@ -58,16 +89,7 @@
 			xmlhttp.open("GET",str,true);
 			xmlhttp.send();
 		}	
-		function loadTable()
-		{
-		   
-		    var url = document.getElementById('url').value;
-		    var usuario = document.getElementById('user').value;
-		    var password = document.getElementById('pw').value;
-		    showDB(url,usuario,password);
-		}
 	</script>
-
 </head>
 <body>
 	<header> 
@@ -83,6 +105,22 @@
 		</div>
 		<div id="tablaDB" class="box">
       		 
+        </div>
+		<div id="agregados" class="box">
+      		 <h2>Data Mart</h2>
+
+      		<form>
+		 		<p>URL: </p>
+		 		<input type="text" id="nurl" class="form" placeholder="Introduce la url"></input>
+		 		<p>Usuario: </p>
+		 		<input type="text" id="nuser" class="form" placeholder="Introduce el usuario"></input>
+		 		<p>Password: </p>
+		 		<input type="text" id="npw" class="form" placeholder="Introduce el password"></input>
+		 		<p>Nombre: </p>
+		 		<input type="text" id="nname" class="form" placeholder="Nombre de tu repositorio"></input>
+		 		<br>
+		 		<input type='submit' id='boton_cre' value='crear' onclick='Crear()'>
+      		</form>
         </div>
 	  
 	</section>
