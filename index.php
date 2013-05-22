@@ -113,15 +113,15 @@
 		<div id="agregados" class="box">
       		 <h2>Data Mart</h2>
 
-      		<form>
+      		<form action="CrearDB.php" method="post">
 		 		<p>URL: </p>
-		 		<input type="text" id="nurl" class="form" placeholder="Introduce la url"></input>
+		 		<input type="text" id="url" class="form" placeholder="Introduce la url"></input>
 		 		<p>Usuario: </p>
-		 		<input type="text" id="nuser" class="form" placeholder="Introduce el usuario"></input>
+		 		<input type="text" id="user" class="form" placeholder="Introduce el usuario"></input>
 		 		<p>Password: </p>
-		 		<input type="text" id="npw" class="form" placeholder="Introduce el password"></input>
+		 		<input type="text" id="pw" class="form" placeholder="Introduce el password"></input>
 		 		<p>Nombre: </p>
-		 		<input type="text" id="nname" class="form" placeholder="Nombre de tu repositorio"></input>
+		 		<input type="text" id="name" class="form" placeholder="Nombre de tu repositorio"></input>
 		 		<br>
 		 		<br>
 		 		<input type='submit' id='boton_cre' value='Crear' onclick='Crear()'>

@@ -1,11 +1,11 @@
 <?php
 	$name = $_GET['name'];
 	$url = $_GET["url"];
-	$usuario = $_GET["user"];
-	$password = $_GET["pass"];
+	$user = $_GET["user"];
+	$password = $_GET["pw"];
 
 	include("php/DataConnection.class.php");
-	$db = new DataConnection($url, $usuario, $password);
+	$db = new DataConnection($url, $user, $password);
 
 	$qry = "CREATE DATABASE ".$name.";";
 	$result = $db->getDB($qry);	

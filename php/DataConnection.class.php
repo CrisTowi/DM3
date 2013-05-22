@@ -1,4 +1,5 @@
 <?php
+
 	if ( !defined("__DATACONNECTION__") ){
 		define("__DATACONNECTION__","");
 		class DataConnection
@@ -44,7 +45,7 @@
 
 			public function getDB($qry){
 
-			    //$link = mysql_connect("localhost","root","root");
+			   // $link = mysql_connect("localhost","root","root");
 
 				return mysql_query($qry);
 			}
