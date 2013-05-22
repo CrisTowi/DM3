@@ -2,19 +2,19 @@
 <html lang="es">
 <head>
 
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>	  
+	<script src="js/jquery-1.4.2.min.js"></script>	  
 	<script src="js/lb.js"></script>  
 	<link rel="stylesheet" type="text/css" href="css/estilo.css"> 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"> 
 	<script>
 		function Crear()
 		{
+
 			var url = document.getElementById('nurl').value;
 			var name = document.getElementById('nname').value;
 			var pw = document.getElementById('npw').value;
 			var user = document.getElementById('nuser').value;
 
-			//alert(url + name + pw + user);
 
 			if (window.XMLHttpRequest)
 			{// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -29,19 +29,21 @@
   			{
 				if (xmlhttp.readyState==4 && xmlhttp.status==200)
     				{
-					document.getElementById("agregados").innerHTML = xmlhttp.responseText;
+    					
+						document.getElementById("agregados").innerHTML = xmlhttp.responseText;
     				}
   			}
-  			             //alert("CrearDB.php?url="+url+"&pass="+pw+"&user="+user+"&name="+name);
-			xmlhttp.open("GET","getDB.php?url="+url+"&pass="+password+"&user="+usuario,true);
-			
+			xmlhttp.open("GET","crearDB.php?url="+url+"&pass="+pw+"&user="+user+"&name="+name,true);			
 			xmlhttp.send();
+
+			alert("Si pase");
 		}
+		
 		function showBD()
 		{
 			 var url = document.getElementById('url').value;
-		         var usuario = document.getElementById('user').value;
-		         var password = document.getElementById('pw').value;
+	         var usuario = document.getElementById('user').value;
+	         var password = document.getElementById('pw').value;
 			if (url.length==0 || usuario.length==0 )
 		         { 
 				document.getElementById("tablaDB").innerHTML="Lo sentimos, vuelve a especificar los datos.";
@@ -64,6 +66,7 @@
     				}
   			}
 			xmlhttp.open("GET","getDB.php?url="+url+"&pass="+password+"&user="+usuario,true);
+			alert("getDB.php?url="+url+"&pass="+password+"&user="+usuario);
 			
 			xmlhttp.send();
 		}	
@@ -88,7 +91,8 @@
   			}
 			xmlhttp.open("GET",str,true);
 			xmlhttp.send();
-		}	
+		}
+			
 	</script>
 </head>
 <body>
@@ -119,7 +123,8 @@
 		 		<p>Nombre: </p>
 		 		<input type="text" id="nname" class="form" placeholder="Nombre de tu repositorio"></input>
 		 		<br>
-		 		<input type='submit' id='boton_cre' value='crear' onclick='Crear()'>
+		 		<br>
+		 		<input type='submit' id='boton_cre' value='Crear' onclick='Crear()'>
       		</form>
         </div>
 	  
