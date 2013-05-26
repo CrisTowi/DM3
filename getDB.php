@@ -1,5 +1,6 @@
 
 <?php
+	$idm="bd";
 	if(isset($_GET["url"])  and isset($_GET["user"]) and isset($_GET["pass"])  )
 	{
 		$url = $_GET["url"];

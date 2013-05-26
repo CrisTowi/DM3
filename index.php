@@ -39,7 +39,11 @@
 
 			alert("Si pase");
 		}
-		
+
+		function AgregarCD()
+		{
+			alert("");
+		}
 		function showBD()
 		{
 			var url = document.getElementById('urlizq').value;
@@ -99,6 +103,44 @@
 			this.name=name;
 			this.type=type;
 		}
+
+		function Pasar()
+		{
+			var parametros="";
+			var x=selectedAttr.length ;
+			for( i = 0 ; i< x ; i++)
+			{
+				parametros += "url"+i+"="+selectedAttr[i].url+"&";
+				parametros += "database"+i+"="+selectedAttr[i].database+"&";
+				parametros += "table"+i+"="+selectedAttr[i].table+"&";
+				parametros += "name"+i+"="+selectedAttr[i].name+"&";
+				parametros += "type"+i+"="+selectedAttr[i].type+"&";
+			}
+			parametros = parametros.slice(0,parametros.length-1);
+			alert(parametros);
+			if (window.XMLHttpRequest)
+			{// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			
+			xmlhttp.onreadystatechange=function()
+  			{
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    				{
+    					
+						document.getElementById("Attrpasados").innerHTML = "<br><br>"+xmlhttp.responseText;
+    				}
+  			}
+			xmlhttp.open("GET","Pasar.php?"+parametros,true);			
+			xmlhttp.send();
+
+			alert("Si pase");
+		}
+
 		function editaLista(objetoAtributo, seleccion)
 		{
 			var x=selectedAttr.length ;

@@ -35,6 +35,7 @@
 		}
 		echo("</table>");
 		echo("<input type='button' onload='	alert(\"".$url.$db.$table."\");checarSeleccionados(\"".$url."\",\"".$db."\",\"".$table."\")' value='Refresca'/>");
+		echo("<input type='button' onclick='Pasar();' value='Pasar'/>");
 		$conn = null;
 	}
 	catch (PDOException $e) {

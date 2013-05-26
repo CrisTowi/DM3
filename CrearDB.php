@@ -14,6 +14,7 @@
 		if($cont ==1)
 		{
 			echo ("<h4>Base de datos ".$name." creada. Inserte sus campos para llenarla.</h4>");
+			echo ("<div id='Attrpasados'> </div>");
 		}
 		else
 		{
