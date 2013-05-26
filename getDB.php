@@ -27,6 +27,7 @@
 			</tr>";
 		}
 		$response = $response."</table>";
+		$conn = null;
 	}
 	catch (PDOException $e) {
 		$response = "Lo lamento... no se pudo conectar al servidor.";

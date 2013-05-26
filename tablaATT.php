@@ -13,14 +13,13 @@
 	}
 	echo "<button class=\"menu\" onclick='muestraContenido(\"getDB.php?url=".$url."&user=".$usuario."&pass=".$password."\")'>Lista BD's</button>";
 	echo "<button class=\"menu\" onclick='muestraContenido(\"tablaTables.php?db=".$db."&url=".$url."&usuario=".$usuario."&password=".$password."\")'>Tablas de ".$db."</button>";
-?>
-<table id='table-content'>
-	<tr class='tr-header'  style='color: white'>
-		<td>Propiedad</td>
-		<td>Tipo de dato</td>
-		<td class='opc'> </td>
-	</tr>
-<?php
+	echo ("
+	<table  id='table-content'>
+		<tr class='tr-header'  style='color: white'>
+			<td>Propiedad</td>
+			<td>Tipo de dato</td>
+			<td class='opc'> </td>
+		</tr>");
 	try
 	{
 		$conn = new PDO('mysql:host='.$url.';dbname='.$db.';charset=utf8', $usuario, $password);
@@ -31,15 +30,18 @@
 			echo "<tr class='tr-cont' >
 			<td>".$fila['Field']."</td>
 			<td>".$fila['Type']."</td>
-			<td><input type='checkbox' name='option1' value='".$fila['Field']."'></td>
+			<td><input type='checkbox' onchange='editaLista(atributo(\"".$url."\", \"".$db."\",\"".$table."\",\"".$fila['Field']."\",\"".$fila['Type']."\"), this.checked)' name='option1' value='".$fila['Field']."'></td>
 		</tr>";
 		}
 		echo("</table>");
+		$conn = null;
 	}
 	catch (PDOException $e) {
 		echo ("Lo lamento... no se pudo conectar al servidor.");
 		echo ("¡Error!: " . $e->getMessage() . "<br/>");
 		die();
 	}
-	
+	echo ("<SCRIPT >
+			alert('checarSeleccionados('".$url."','".$db."','".$table."')');
+		</SCRIPT>");
 ?>

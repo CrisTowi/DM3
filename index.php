@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/estilo.css"> 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"> 
 	<script>
+		var selectedAtt;
 		function Crear()
 		{
 
@@ -90,7 +91,45 @@
 			xmlhttp.open("GET",str,true);
 			xmlhttp.send();
 		}
-			
+		function atributo(url, database,table,name,type)
+		{
+			this.url = url;
+			this.database=database;
+			this.table=table;
+			this.name=name;
+			this.type=type;
+		}
+		function editaLista(objetoAtributo, seleccion)
+		{
+			var x=selectedAtt.length ;
+			alert("Estamos editando");
+			if(seleccion == false)
+			{
+				for( i = 0 ; i< x ; i++)
+				{
+					if(selectedAtt[i].name  == objetoAtributo.name  &&  selectedAtt[i].table == objeto.table && selectedAtt[i].database = objetoAtributo.database && selectedAtt[i].url  == objetoAtributo.url)
+					{
+						splice(i,1);
+					}
+				}
+			}
+			else
+			{
+				selectedAtt.push(objetoAtributo);
+			}
+		}	
+		function checarSeleccionados(database,table)
+		{
+			var x=selectedAtt.length ;
+			alert("Estamos checando ");
+			for( i = 0 ; i< x ; i++)
+			{
+				if(  selectedAtt[i].url  == objetoAtributo.url && selectedAtt[i].table == table && selectedAtt[i].database = database)
+				{
+					document.getElementById(selectedAtt[i]).checked = true;
+				}
+			}
+		}
 	</script>
 </head>
 <body>
@@ -111,18 +150,18 @@
 		<div id="agregados" class="box">
       		 <h2>Data Mart</h2>
 
-      		<form action="CrearDB.php" method="post">
+      		<form >
 		 		<p>URL: </p>
-		 		<input type="text" id="url" class="form" placeholder="Introduce la url"></input>
+		 		<input type="text" id="nurl" class="form" placeholder="Introduce la url"></input>
 		 		<p>Usuario: </p>
-		 		<input type="text" id="user" class="form" placeholder="Introduce el usuario"></input>
+		 		<input type="text" id="nuser" class="form" placeholder="Introduce el usuario"></input>
 		 		<p>Password: </p>
-		 		<input type="text" id="pw" class="form" placeholder="Introduce el password"></input>
+		 		<input type="text" id="npw" class="form" placeholder="Introduce el password"></input>
 		 		<p>Nombre: </p>
-		 		<input type="text" id="name" class="form" placeholder="Nombre de tu repositorio"></input>
+		 		<input type="text" id="nname" class="form" placeholder="Nombre de tu repositorio"></input>
 		 		<br>
 		 		<br>
-		 		<input type='submit' id='boton_cre' value='Crear' onclick='Crear()'>
+		 		<input  type="button" id='boton_cre' value='Crear' onclick='Crear()'>
       		</form>
         </div>
 	  

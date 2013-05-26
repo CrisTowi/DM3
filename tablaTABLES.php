@@ -27,6 +27,7 @@
 			</tr>");
 		}
 		echo("</table>");
+		$conn = null;
 	}
 	catch (PDOException $e) {
 		echo ("Lo lamento... no se pudo conectar al servidor.");

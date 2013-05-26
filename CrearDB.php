@@ -1,21 +1,30 @@
 <?php
-	$name = $_GET['name'];
-	$url = $_GET["url"];
-	$user = $_GET["user"];
-	$password = $_GET["pw"];
-
-	include("php/DataConnection.class.php");
-	$db = new DataConnection($url, $user, $password);
-
-	$qry = "CREATE DATABASE ".$name.";";
-	$result = $db->getDB($qry);	
-
-
-	if($result)
+	if(isset($_GET['name']) and isset($_GET['url']) and  isset($_GET['user']) and isset($_GET['pass'])) 
 	{
-			$response = "<h4>Base de datos ".$name." creada. Inserte sus campos para llenarla.</h4>";
+		$name = $_GET['name'];
+		$url = $_GET["url"];
+		$user = $_GET["user"];
+		$password = $_GET["pass"];
 	}
-
-	echo $response;
+	try
+	{
+		$conn = new PDO('mysql:host='.$url.';charset=utf8', $user, $password);
+		$qry = "CREATE DATABASE ".$name.";";
+		$cont = $conn->exec($qry);
+		if($cont ==1)
+		{
+			echo ("<h4>Base de datos ".$name." creada. Inserte sus campos para llenarla.</h4>");
+		}
+		else
+		{
+			echo( "<h4>Base de datos ".$name." no fue creada. Intente más tarde.</h4>");
+		}
+		$conn = null;
+	}
+	catch (PDOException $e) {
+		echo ("Lo lamento... no se pudo conectar al servidor.");
+		echo ("¡Error!: " . $e->getMessage() . "<br/>");
+		die();
+	}
 	
 ?>
