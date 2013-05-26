@@ -30,10 +30,11 @@
 			echo "<tr class='tr-cont' >
 			<td>".$fila['Field']."</td>
 			<td>".$fila['Type']."</td>
-			<td><input type='checkbox' onchange='editaLista(atributo(\"".$url."\", \"".$db."\",\"".$table."\",\"".$fila['Field']."\",\"".$fila['Type']."\"), this.checked)' name='option1' value='".$fila['Field']."'></td>
+			<td><input type='checkbox' id='".$url.$db.$table.$fila['Field']."' onchange='editaLista(new atributo(\"".$url."\", \"".$db."\",\"".$table."\",\"".$fila['Field']."\",\"".$fila['Type']."\"), this.checked)' value='".$fila['Field']."'/></td>
 		</tr>";
 		}
 		echo("</table>");
+		echo("<input type='button' onload='	alert(\"".$url.$db.$table."\");checarSeleccionados(\"".$url."\",\"".$db."\",\"".$table."\")' value='Refresca'/>");
 		$conn = null;
 	}
 	catch (PDOException $e) {
@@ -42,6 +43,6 @@
 		die();
 	}
 	echo ("<SCRIPT >
-			alert('checarSeleccionados('".$url."','".$db."','".$table."')');
+			alert(\"".$url.$db.$table."\");checarSeleccionados(\"".$url."\",\"".$db."\",\"".$table."\");
 		</SCRIPT>");
 ?>

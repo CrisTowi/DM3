@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/estilo.css"> 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"> 
 	<script>
-		var selectedAtt;
+		var selectedAttr = new Array();
 		function Crear()
 		{
 
@@ -101,32 +101,31 @@
 		}
 		function editaLista(objetoAtributo, seleccion)
 		{
-			var x=selectedAtt.length ;
-			alert("Estamos editando");
+			var x=selectedAttr.length ;
 			if(seleccion == false)
 			{
 				for( i = 0 ; i< x ; i++)
 				{
-					if(selectedAtt[i].name  == objetoAtributo.name  &&  selectedAtt[i].table == objeto.table && selectedAtt[i].database = objetoAtributo.database && selectedAtt[i].url  == objetoAtributo.url)
+					if((selectedAttr[i].name  == objetoAtributo.name  &&  selectedAttr[i].table == objetoAtributo.table) &&( selectedAttr[i].database == objetoAtributo.database && selectedAttr[i].url  == objetoAtributo.url))
 					{
-						splice(i,1);
+						selectedAttr.splice(i,1);
 					}
 				}
 			}
 			else
 			{
-				selectedAtt.push(objetoAtributo);
+				selectedAttr.push(objetoAtributo);
 			}
 		}	
-		function checarSeleccionados(database,table)
+		function checarSeleccionados(url,database,table)
 		{
-			var x=selectedAtt.length ;
-			alert("Estamos checando ");
+			var x=selectedAttr.length ;
 			for( i = 0 ; i< x ; i++)
 			{
-				if(  selectedAtt[i].url  == objetoAtributo.url && selectedAtt[i].table == table && selectedAtt[i].database = database)
+				if(  selectedAttr[i].url  == url && (selectedAttr[i].table == table && selectedAttr[i].database == database))
 				{
-					document.getElementById(selectedAtt[i]).checked = true;
+					
+					document.getElementById(selectedAttr[i].url+selectedAttr[i].database+selectedAttr[i].table+selectedAttr[i].name).checked = true;
 				}
 			}
 		}
@@ -163,6 +162,7 @@
 		 		<br>
 		 		<input  type="button" id='boton_cre' value='Crear' onclick='Crear()'>
       		</form>
+<input type='checkbox' onchange='editaLista(new atributo("localhost", "information_schema","CHARACTER_SETS","CHARACTER_SET_NAME","varchar(32)"), this.checked)' name='option1' value='CHARACTER_SET_NAME'/>
         </div>
 	  
 	</section>
