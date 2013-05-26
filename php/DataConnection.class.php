@@ -39,7 +39,7 @@
 			
 			public function executeQuery($qry){
 				if ( $this->link != NULL )
-					return mysql_query($qry,$this->link);
+					return mysql_query($qry,$this->link) or die('Query failed: ' . mysql_error());;
 				return false;
 			}
 
@@ -49,7 +49,11 @@
 
 				return mysql_query($qry);
 			}
-
+			public function disconnectConnection()
+			{
+				mysql_close($link);
+				return true;
+			}
 
 		}
 	}
