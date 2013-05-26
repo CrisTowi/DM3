@@ -41,9 +41,9 @@
 		
 		function showBD()
 		{
-			 var url = document.getElementById('url').value;
-	         var usuario = document.getElementById('user').value;
-	         var password = document.getElementById('pw').value;
+			var url = document.getElementById('urlizq').value;
+	         		var usuario = document.getElementById('userizq').value;
+		         var password = document.getElementById('pwizq').value;
 			if (url.length==0 || usuario.length==0 )
 		         { 
 				document.getElementById("tablaDB").innerHTML="Lo sentimos, vuelve a especificar los datos.";
@@ -66,8 +66,6 @@
     				}
   			}
 			xmlhttp.open("GET","getDB.php?url="+url+"&pass="+password+"&user="+usuario,true);
-			alert("getDB.php?url="+url+"&pass="+password+"&user="+usuario);
-			
 			xmlhttp.send();
 		}	
 
@@ -135,13 +133,13 @@
 	 	<form> 
 
 	 		<p>URL: </p>
-	 		<input type="text" id="url" value="localhost" class="form" placeholder="Introduce la url"></input>
+	 		<input type="text" id="urlizq" value="localhost" class="form" placeholder="Introduce la url"></input>
 	 		</br>
 	 		<p>Usuario: </p>
-	 		<input type="text" id="user" class="form"  value="root" placeholder="Introduce el usuario"></input>
+	 		<input type="text" id="userizq" class="form"  value="root" placeholder="Introduce el usuario"></input>
 	 		</br>
 	 		<p>Password: </p>
-	 		<input type="text" id="pw" class="form" placeholder="Introduce el password" value="root"></input>
+	 		<input type="text" id="pwizq" class="form" placeholder="Introduce el password" value="root"></input>
 
 		    <p align="center">  
 		        <input id="close-panel" type="button" value="Aceptar" onclick='showBD()'></input>  
