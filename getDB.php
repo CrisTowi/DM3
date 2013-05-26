@@ -32,6 +32,7 @@
 	catch (PDOException $e) {
 		$response = "Lo lamento... no se pudo conectar al servidor.";
 		$response ="¡Error!: " . $e->getMessage() . "<br/>";
+		echo $response;
 		die();
 	}
 	echo $response;
