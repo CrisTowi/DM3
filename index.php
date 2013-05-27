@@ -42,8 +42,13 @@
 
 		function AgregarCD()
 		{
-			alert("");
+			var url = document.getElementById('durl').value;
+			var user = document.getElementById('duser').value;
+			var pw = document.getElementById('dpw').value;
+			alert(url);
+
 		}
+
 		function showBD()
 		{
 			var url = document.getElementById('urlizq').value;
@@ -106,7 +111,12 @@
 
 		function Pasar()
 		{
-			var parametros="";
+			var i=0;
+			var parametros = "";
+			var url = document.getElementById('durl').value;
+			var user = document.getElementById('duser').value;
+			var pw = document.getElementById('dpw').value;
+
 			var x=selectedAttr.length ;
 			for( i = 0 ; i< x ; i++)
 			{
@@ -116,8 +126,9 @@
 				parametros += "name"+i+"="+selectedAttr[i].name+"&";
 				parametros += "type"+i+"="+selectedAttr[i].type+"&";
 			}
-			parametros = parametros.slice(0,parametros.length-1);
-			alert(parametros);
+			parametros+="durl="+url+"&";
+			parametros+="duser="+user+"&";
+			parametros+="dpw="+pw;
 			if (window.XMLHttpRequest)
 			{// code for IE7+, Firefox, Chrome, Opera, Safari
 				xmlhttp=new XMLHttpRequest();
@@ -131,11 +142,11 @@
   			{
 				if (xmlhttp.readyState==4 && xmlhttp.status==200)
     				{
-    					
+    					selectedAttr = new Array();
 						document.getElementById("Attrpasados").innerHTML = "<br><br>"+xmlhttp.responseText;
     				}
   			}
-			xmlhttp.open("GET","Pasar.php?"+parametros,true);			
+			xmlhttp.open("GET","Pasar.php?"+parametros,true);		
 			xmlhttp.send();
 
 			alert("Si pase");
